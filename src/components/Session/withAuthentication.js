@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
@@ -21,6 +21,10 @@ const withAuthentication = Component => {
                       : this.setState({ authUser: null})
                 },
             );
+        }
+
+        componentWillUnmount() {
+            this.listener();
         }
 
         render() {

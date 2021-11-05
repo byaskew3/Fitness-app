@@ -1,6 +1,6 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/database';
+import app from 'firebase/app'
+import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
     apiKey: "AIzaSyD0LV_HQFORMZVkkGCWolD1Xdk6HRweLyA",
@@ -13,8 +13,8 @@ const config = {
 
 class Firebase {
     constructor() {
-        firebase.initializeApp(config);
-        this.auth = firebase.auth();
+        app.initializeApp(config);
+        this.auth = app.auth();
         // this.db = app.database(); Later add database
     }
     

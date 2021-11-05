@@ -1,36 +1,44 @@
 import React from 'react';
 
-import { AuthUserContext, withAuthentication } from '../components/Session';
+import { AuthUserContext, withAuthentication } from '../components/Session'
+import { withFirebase } from '../components/Firebase';
 import { withRouter } from 'react-router-dom';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+
+import {
+  Switch,
+  Route,
+  useRouteMatch
+} from "react-router-dom";
 
 import clsx from 'clsx';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Box from '@material-ui/core/Box';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import Container from '@material-ui/core/Container';
+import MenuIcon from '@material-ui/icons/Menu';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import useStyles from '../config/theme.dashboard'
+import useStyles from '../config/theme.dashboard';
 
+import Calendar from '../components/Calendar'
 import Sidebar from '../components/Sidebar'
-
-import Copyright from '../components/Copyright'
+import Copyright from '../components/Copyright';
 
 function Dashboard(props) {
   let match = useRouteMatch();
 
   const classes = useStyles();
-
   const [open, setOpen] = React.useState(true);
-
-  const handleDrawerOpen = () => setOpen(true);
-  const handleDrawerClose = () => setOpen(false);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const signOut = () => {
       props.firebase.auth.signOut()
@@ -67,17 +75,20 @@ function Dashboard(props) {
                     </IconButton>
                 </Toolbar>
                 </AppBar>
-        
-                <Sidebar 
-                    signOut={signOut} 
-                    open={open} 
-                    handleDrawerClose={handleDrawerClose} 
+    
+                <Sidebar
+                    signOut={signOut}
+                    open={open}
+                    handleDrawerClose={handleDrawerClose}
                 />
-        
+    
                 <main className={classes.content, !open ? classes.contentClosed : classes.appBarShift }>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="xl" className={classes.container}>
-                    Calendar
+                    <Calendar
+                        firebase={props.firebase}
+                        authUser={authUser}
+                    />
                     <Box pt={4}>
                         <Copyright />
                     </Box>
@@ -85,11 +96,11 @@ function Dashboard(props) {
                 </main>
                 
             </div>
-            ) : (
-           <p>You must sign in to view this page.</p>
+        ) : (
+            <p>You must sign in to view this page!</p>
         )
       }
-      </AuthUserContext.Consumer>      
+      </AuthUserContext.Consumer>
   );
 };
 
