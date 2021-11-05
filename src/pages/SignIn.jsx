@@ -32,13 +32,13 @@ function SignIn(props) {
   const handleSubmit = () => {
     props.firebase.doSignInWithEmailAndPassword(user.email, user.password)
     .then(authUser => {
-      setUser({initialUser})
-      props.history.push('/dashboard')
+      setUser({initialUser});
+      props.history.push("/dashboard");
     })
     .catch(error => {
       setUser({...user, error: error.message})
     });
-  };
+  }
 
   const isValid = user.email === '' || user.password === '';
 

@@ -23,7 +23,7 @@
 
 .calendar .today {
     font-weight: bold;
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    background-image: linear-gradient(to top, #9b9b9b 0%, #ffffff 100%);
 }
 
 .calendar .active {

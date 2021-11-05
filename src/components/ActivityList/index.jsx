@@ -18,7 +18,7 @@ function ActivityList(props) {
     const deleteActivity = (i) => {
         // Get key of activity in firebase
        const activityKey = Object.keys(activities)[i];
-       // Connect to our firebase API
+       // Connect to firebase API
        const emptyActivity = {
             date: null,
             duration: null,
@@ -49,7 +49,7 @@ function ActivityList(props) {
             
             {
                 activities === 'not set' || activities === null
-                    ? <p>No activities added yet.</p>
+                    ? <p>No workouts added yet.</p>
                     :
                     <TableContainer component={Paper} >
                         <Table>
@@ -82,7 +82,7 @@ function ActivityList(props) {
                                         <TableRow key={i}>
                                             <TableCell>{name}</TableCell>
                                             <TableCell>{type}</TableCell>
-                                            <TableCell>{duration}</TableCell>
+                                            <TableCell>{duration}min</TableCell>
                                             <TableCell>
                                                 <DeleteIcon 
                                                     onClick={e => deleteActivity(i)}

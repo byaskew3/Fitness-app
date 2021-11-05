@@ -29,7 +29,6 @@ function SignUp(props) {
 
   const handleSubmit = e => {
     props.firebase.auth.createUserWithEmailAndPassword(user.email, user.password)
-    // Later add user also to databse
     .then(authUser => {
       // creates user in firebase
       return props.firebase

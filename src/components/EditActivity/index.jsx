@@ -23,12 +23,8 @@ const useStyles = makeStyles(theme => ({
 function EditActivity(props) {
     const classes = useStyles();
 
-    const {authUser, firebase, activity, activityKey, setEditing, selectedDay, setOpenSnackbar, setSnackbarMsg} = props;
+    const {authUser, firebase, activity, activityKey, setEditing, setOpenSnackbar, setSnackbarMsg} = props;
     const uid = authUser.uid;
-
-    // Set query date for updating database
-    selectedDay.year = new Date().getFullYear();
-    let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
 
     // Set default activity object
     const defaultActivity = {

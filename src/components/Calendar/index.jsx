@@ -76,6 +76,7 @@ function Calendar(props) {
             let data = snapshot.val();
             setActivities(data);
             setLoading(false);
+            setEditing(false);
         });
 
         //Update active days
@@ -89,9 +90,9 @@ function Calendar(props) {
             const values = Object.values(data);
             // Store all active month/day combos
             const arr = values.map(obj => {
-                return obj.date.length === 8
-                ? obj.date.slice(0,3)
-                : obj.date.slice(0,4)
+                // return obj.date.length === 8
+                // ? obj.date.slice(0,3)
+                // : obj.date.slice(0,4)
             });
             console.log(arr);
             setActiveDays(arr);
@@ -132,7 +133,7 @@ function Calendar(props) {
                     setSelectedDay={setSelectedDay}
                     selectedDay={selectedDay}
                     weekdays={moment.weekdays()}
-                    // activeDays={activeDays}
+                    activeDays={activeDays}
                 />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
@@ -166,7 +167,7 @@ function Calendar(props) {
             </Grid>
             <Grid item xs={12} md={7}>
                 <Paper className="paper">
-                <h3>Activities on {selectedDay.month + 1} - {selectedDay.day} -  {selectedDay.year}</h3>
+                <h3>Workouts on {selectedDay.month + 1} - {selectedDay.day} -  {selectedDay.year}</h3>
                 <ActivityList
                     loading={loading}
                     activities={activities}

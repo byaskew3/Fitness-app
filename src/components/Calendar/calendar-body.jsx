@@ -1,7 +1,6 @@
 import React from 'react';
 import './calendar.css';
 import nextId from 'react-id-generator';
-import moment from 'moment'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -52,14 +51,14 @@ const CalendarBody = props => {
     let cells = [];
 
     totalSlots.forEach((row, i) => {
-        if (i % 7 !==0) {
+        if (i % 7 !== 0) {
             cells.push(row);
         } else {
             rows.push(cells);
             cells = [];
             cells.push(row);
         }
-        if (i === totalSlots.length - 1) {
+        if (i === totalSlots.length-1) {
             rows.push(cells)
         }
     })

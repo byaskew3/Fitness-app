@@ -1,14 +1,9 @@
 import React from 'react';
 
 import { AuthUserContext, withAuthentication } from '../components/Session'
-import { withFirebase } from '../components/Firebase';
 import { withRouter } from 'react-router-dom';
 
-import {
-  Switch,
-  Route,
-  useRouteMatch
-} from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,6 +22,7 @@ import useStyles from '../config/theme.dashboard';
 import Calendar from '../components/Calendar'
 import Sidebar from '../components/Sidebar'
 import Copyright from '../components/Copyright';
+import Signup from '../pages/SignUp'
 
 function Dashboard(props) {
   let match = useRouteMatch();
@@ -63,12 +59,12 @@ function Dashboard(props) {
                     <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                    YOUR FIT LOG
+                    FIT LOG
                     </Typography>
                     <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={0} color="secondary">
                         <Typography component="p" style={{paddingRight: "15px"}}>
-                        username
+                        Welcome Back!
                         </Typography>
                         <NotificationsIcon />
                     </Badge>

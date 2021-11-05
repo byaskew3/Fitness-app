@@ -79,7 +79,7 @@ function AddActivity(props) {
                     margin="normal"
                     required
                     fullWidth
-                    label="Type your workout here"
+                    label="Type your workout"
                     value={activity.name}
                     name="name"
                     onChange={handleChange}
