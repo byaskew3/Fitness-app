@@ -31,6 +31,16 @@ function SignUp(props) {
     props.firebase.auth.createUserWithEmailAndPassword(user.email, user.password)
     // Later add user also to databse
     .then(authUser => {
+      // creates user in firebase
+      return props.firebase
+        .user(authUser.user.uid)
+        .set({
+          username: user.name,
+          email: user.email,
+          activities: 'not set'
+        });
+    })
+    .then(authUser => {
       setUser(initialUser);
       props.history.push("/dashboard");
     })
