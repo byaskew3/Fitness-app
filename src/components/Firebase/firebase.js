@@ -30,6 +30,9 @@ class Firebase {
 
     doPasswordReset = email => 
         this.auth.sendPasswordResetEmail(email);
+    
+    /* Database */
+    user = uid => this.db.ref(`users/${uid}`);
 }
 
 export default Firebase;
